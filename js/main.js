@@ -54,6 +54,7 @@ function compare (good, evil){
         htmlResult('Ha ganado el Ejército del Mal! Vuelve a intentarlo.')
        }       
 }
+
 //funcion para pintar en el HTML
 function htmlResult (result){
     textResult.innerHTML= result;
@@ -69,10 +70,11 @@ function handleClick (event) {
     scoreWriting (scoreGoodguys, scoreBadguys);
     loop(i)
 }
+
 //evento
 btn.addEventListener('click', handleClick);
 
-//Bonus
+//BONUS//
 
 //función para pintar los puntos de cada facción:
 
@@ -82,8 +84,7 @@ function scoreWriting (goodGuys, badGuys) {
 }
 
 //bucle
-function loop (i,scoreGoodguys, scoreBadguys){    
-    console.log(i)
+function loop (i, scoreGoodguys, scoreBadguys){    
     if (i>9) {
         btnCollapse ()
         if (scoreGoodguys > scoreBadguys) {
@@ -118,6 +119,9 @@ function resetClick (event) {
     event.preventDefault();    
     eraseScore ();
     collapseReset ();
+    scoreGoodguys =0;
+    scoreBadguys=0;
+    i=0;
     htmlResult ('¡Comienza la batalla!'); 
 
 }
