@@ -8,16 +8,17 @@ const textResult = document.querySelector('.js-text');
 
 
 let random = 0;
-let scoreGoodguys=0;
-let scoreBadguys =0;
-let i =0;
+let scoreGoodguys= 0;
+let scoreBadguys = 0;
+let i = 0;
 
 
 //función para elegir un número entre el 1 y el 6
 
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);    
-   }
+}
+
 //función para convertir el valor random en valores entre 2 y 5, como corresponde a las razas malvadas
 function badGuysGenerator (){
    let random = getRandomNumber(6);
@@ -50,8 +51,7 @@ function compare (good, evil){
         console.log (good,evil);
         scoreBadguys++;
         htmlResult('Ha ganado el Ejército del Mal! Vuelve a intentarlo.')
-       }
-       
+       }       
 }
 //funcion para pintar en el HTML
 function htmlResult (result){
@@ -84,19 +84,22 @@ function scoreWriting (goodGuys, badGuys) {
 function loop (i,scoreGoodguys, scoreBadguys){    
     console.log(i)
     if (i>9) {
-        btn.classList.add ('collapse');
-        btnReset.classList.remove ('collapse');
+        btnCollapse ()
         if (scoreGoodguys > scoreBadguys) {
-        textResult.innerHTML = 'Has ganado el juego';
+            htmlResult ('Has ganado el juego');
         } else {
-        textResult.innerHTML = 'Has perdido el juego';
+            htmlResult ('Has perdido el juego'); 
         }
     }
 }
 
+//collapse boton "Jugar"
+function btnCollapse (){
+    btn.classList.add ('collapse');
+    btnReset.classList.remove ('collapse');
+}
 
-//evento de click en reset
-btnReset.addEventListener('click',resetClick);
+
 
 //colapsar el boton de reset
 function collapseReset (){
@@ -114,5 +117,9 @@ function resetClick (event) {
     event.preventDefault();    
     eraseScore ();
     collapseReset ();
-    textResult.innerHTML = '¡Comienza la batalla!';
+    htmlResult ('¡Comienza la batalla!'); 
+
 }
+//evento de click en reset
+btnReset.addEventListener('click',resetClick);
+
