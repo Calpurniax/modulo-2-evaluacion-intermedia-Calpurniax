@@ -3,9 +3,15 @@
 //variables dentro del HTML
 const select = document.querySelector('.js-select');
 const btn = document.querySelector('.js-btn');
+const btnReset = document.querySelector('.js-reset');
 const textResult = document.querySelector('.js-text');
 
+
 let random = 0;
+let scoreGoodguys=0;
+let scoreBadguys =0;
+let i =0;
+
 
 //función para elegir un número entre el 1 y el 6
 
@@ -35,25 +41,78 @@ function goodSelect () {
 function compare (good, evil){
     if (good > evil){
         console.log (good,evil);
+        scoreGoodguys++
         htmlResult('Ha ganado el Ejército del Bien! Enhorabuena.')
        }else if (good >= evil){
-        console.log (good,evil);
+        console.log (good,evil);        
         htmlResult("Empate");
        } else {
         console.log (good,evil);
+        scoreBadguys++;
         htmlResult('Ha ganado el Ejército del Mal! Vuelve a intentarlo.')
        }
+       
 }
 //funcion para pintar en el HTML
 function htmlResult (result){
     textResult.innerHTML= result;
 }
 
+//función manejadora del evento
 function handleClick (event) {
     event.preventDefault();
+    i++    
     const goodGuys= goodSelect();    
     const badGuys = badGuysGenerator(); 
-    const result = compare (goodGuys, badGuys);    
+    compare (goodGuys, badGuys);  
+    scoreWriting (scoreGoodguys, scoreBadguys);
+    loop(i)
+}
+//evento
+btn.addEventListener('click', handleClick);
+
+//Bonus
+
+//función para pintar los puntos de cada facción:
+
+const score = document.querySelector('.js-score');
+function scoreWriting (goodGuys, badGuys) {
+    score.innerHTML = `<li>Jugadora: ${goodGuys}</li><li>Computadora: ${badGuys}</li>`
 }
 
-btn.addEventListener('click', handleClick);
+//bucle
+function loop (i,scoreGoodguys, scoreBadguys){    
+    console.log(i)
+    if (i>9) {
+        btn.classList.add ('collapse');
+        btnReset.classList.remove ('collapse');
+        if (scoreGoodguys > scoreBadguys) {
+        textResult.innerHTML = 'Has ganado el juego';
+        } else {
+        textResult.innerHTML = 'Has perdido el juego';
+        }
+    }
+}
+
+
+//evento de click en reset
+btnReset.addEventListener('click',resetClick);
+
+//colapsar el boton de reset
+function collapseReset (){
+        btn.classList.remove ('collapse');
+        btnReset.classList.add ('collapse');
+}
+
+//borrar puntuaciones
+function eraseScore (){
+    score.innerHTML = '';
+}
+
+//función para resetear juego
+function resetClick (event) {
+    event.preventDefault();    
+    eraseScore ();
+    collapseReset ();
+    textResult.innerHTML = '¡Comienza la batalla!';
+}
