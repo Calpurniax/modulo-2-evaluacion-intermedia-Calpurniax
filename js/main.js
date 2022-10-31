@@ -31,6 +31,7 @@ function badGuysGenerator (){
     }
     return random;
 } 
+
 //función para la facción bondadosa
 function goodSelect () {    
     const selectValue = parseInt(select.value);     
