@@ -19,29 +19,30 @@ function goodSelect () {
     return selectValue;
 }
 
-//funcion para pintar en el HTML
-
-
 //funcion para comparar las dos facciones
 
 function compare (good, evil){
     if (good > evil){
         console.log (good,evil);
-        console.log ("ganan los buenos");
+        htmlResult('Ha ganado el Ejército del Bien! Enhorabuena.')
        }else if (good >= evil){
         console.log (good,evil);
-        console.log ("empate");
+        htmlResult("Empate");
        } else {
         console.log (good,evil);
-        console.log ("ganan los malos");
+        htmlResult('Ha ganado el Ejército del Mal! Vuelve a intentarlo.')
        }
+}
+//funcion para pintar en el HTML
+function htmlResult (result){
+    textResult.innerHTML= result;
 }
 
 function handleClick (event) {
     event.preventDefault();
     const goodGuys= goodSelect();    
     let random = getRandomNumber(6)    
-    compare (goodGuys, random);
+    const result = compare (goodGuys, random);    
 }
 
 btn.addEventListener('click', handleClick);
