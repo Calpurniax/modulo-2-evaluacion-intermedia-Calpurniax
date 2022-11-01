@@ -6,6 +6,47 @@ const btn = document.querySelector('.js-btn');
 const btnReset = document.querySelector('.js-reset');
 const textResult = document.querySelector('.js-text');
 
+//objetos del array de los malvados
+/*
+const surenos = {
+    fuerza:2,
+};
+const orcos = {
+    fuerza:2,
+};
+const goblins = {
+    fuerza:2,
+};
+const huargos ={
+    fuerza:3,
+}
+const trolls = {
+    fuerza:5,
+}*/
+
+//array con las razas malvadas
+const badGuysRaces = [   
+    '', 
+    {   name:'surenos',
+        strength:2,
+    },
+    {
+        name:'orcos',
+        strength:2,
+    },
+    {
+        name:'goblins',
+        strength:2,
+    },
+    {
+        name:'huargos',
+        strength:3,
+    },
+    {
+        name:'trolls',
+        strength:5,
+    },
+];
 
 let random = 0;
 let scoreGoodguys= 0;
@@ -13,26 +54,21 @@ let scoreBadguys = 0;
 let i = 0;
 
 
-//función para elegir un número entre el 1 y el 6
+//función para elegir un número entre el 1 y el 5
 
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);    
 }
 
-//función para convertir el valor random en valores entre 2 y 5, como corresponde a las razas malvadas
+//función para convertir el valor random en una raza
+
 function badGuysGenerator (){
-   let random = getRandomNumber(6);
-    if (random <= 2){
-        random =2
-    }else if (random >2 && random<5) {
-        random =3
-    }else if (random >=5){
-        random =5;
-    }
-    return random;
+   let random = getRandomNumber(5);  
+   return badGuysRaces[random].strength;
 } 
 
 //función para la facción bondadosa
+
 function goodSelect () {    
     const selectValue = parseInt(select.value);     
     return selectValue;
@@ -41,17 +77,15 @@ function goodSelect () {
 //funcion para comparar las dos facciones
 
 function compare (good, evil){
-    if (good > evil){
-        console.log (good,evil);
-        scoreGoodguys++
-        htmlResult('Ha ganado el Ejército del Bien! Enhorabuena.')
-       }else if (good >= evil){
-        console.log (good,evil);        
-        htmlResult("Empate");
-       } else {
-        console.log (good,evil);
-        scoreBadguys++;
-        htmlResult('Ha ganado el Ejército del Mal! Vuelve a intentarlo.')
+    if (good > evil){        
+        scoreGoodguys++;        
+        htmlResult('Ha ganado el Ejército del Bien! Enhorabuena.')        
+       }else if (good < evil){         
+        scoreBadguys++;      
+        htmlResult("Ha ganado el Ejército del Mal! Vuelve a intentarlo.");
+        return scoreBadguys
+       } else {              
+        htmlResult('Empate')
        }       
 }
 
@@ -64,11 +98,11 @@ function htmlResult (result){
 function handleClick (event) {
     event.preventDefault();
     i++    
-    const goodGuys= goodSelect();    
-    const badGuys = badGuysGenerator(); 
-    compare (goodGuys, badGuys);  
+    const goodGuys= goodSelect();     
+    const badGuys = badGuysGenerator ();    
+    compare (goodGuys, badGuys);      
     scoreWriting (scoreGoodguys, scoreBadguys);
-    loop(i)
+    gameOver(i,scoreGoodguys, scoreBadguys);
 }
 
 //evento
@@ -84,9 +118,9 @@ function scoreWriting (goodGuys, badGuys) {
 }
 
 //bucle
-function loop (i, scoreGoodguys, scoreBadguys){    
+function gameOver (i, scoreGoodguys, scoreBadguys){    
     if (i>9) {
-        btnCollapse ()
+        btnCollapse ()        
         if (scoreGoodguys > scoreBadguys) {
             htmlResult ('Has ganado el juego');
         } else {
@@ -123,8 +157,8 @@ function resetClick (event) {
     scoreBadguys=0;
     i=0;
     htmlResult ('¡Comienza la batalla!'); 
-
 }
+
 //evento de click en reset
 btnReset.addEventListener('click',resetClick);
 
