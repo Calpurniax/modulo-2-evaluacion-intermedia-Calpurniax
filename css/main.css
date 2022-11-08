@@ -16,3 +16,30 @@
     color: white;
     margin-left: 5%;
 }
+.main_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 2fr 1fr 2fr;
+}
+.form_good{    
+    display:flex;
+    flex-direction: column;   
+    justify-content: center;
+    grid-column: 1 ;
+    padding: 25% 20% 0 5%;  
+    align-content: space-around;
+    gap: 10px;
+}
+.button {
+    background-color: #BA2100;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10%;
+}
+.message {
+    grid-column: 2;
+}
+.score {
+    grid-column: 2;
+}
