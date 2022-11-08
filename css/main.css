@@ -1,3 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .collapse {
     display: none;
+}
+.header {
+    height: 30vh;
+    background-color:#BA2100;
+    display: flex;
+    align-items: center;    
+}
+.title {    
+    color: white;
+    margin-left: 5%;
 }

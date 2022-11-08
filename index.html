@@ -10,7 +10,10 @@
 </head>
 
 <body>
-  <main>
+  <header class="header">
+    <h1 class="title">Batalla por la tierra media</h1>
+  </header>
+  <main class="js-main">
     <form class="form__good">
       <select name="js-select" id="js-select" class="js-select">
         <option value="">Selecciona una raza para pelear</option>
@@ -24,8 +27,10 @@
       <button class="js-reset collapse">Reiniciar el juego</button>
     </form>
     <p class="js-text">¡Comienza la batalla!</p>
-    <p>Puntuaciones</p>
-    <ul class="js-score"></ul>
+    <aside class="score">
+      <p>Puntuaciones</p>
+      <ul class="js-score"></ul>
+    </aside>
   </main>
   <script src="./js/main.js"></script>
 </body>
