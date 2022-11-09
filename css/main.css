@@ -95,22 +95,26 @@
     background-position: center;
     background-size: cover;
 }
+
 .battle {
     grid-column: 2;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 20px;
 }
-.battle-span{
+
+.battle-span {
     color: #BA2100;
 }
-.finish{
+
+.finish {
     font-size: 24px;
     font-weight: 700;
     background-color: #BA2100;
     color: white;
     padding: 5%;
 }
+
 /*fondos para cada raza buena*/
 .pelosos {
     background-image: url(https://es.web.img3.acsta.net/newsv7/22/09/02/11/42/3686775.jpg);

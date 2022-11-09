@@ -146,7 +146,6 @@ function handleClick(event) {
         scoreWriting(scoreGoodguys, scoreBadguys);
         renderArmy();
         finishGame(i, scoreGoodguys, scoreBadguys);
-
     }
 }
 //evento
