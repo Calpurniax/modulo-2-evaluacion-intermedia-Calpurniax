@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modulo 2 - evaluación intermedia - Sofía Gracia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/main.css" />
 </head>
 
@@ -16,7 +19,7 @@
   <main class="main_container">
     <form class="form_good js-container">
       <select name="js-select" id="js-select" class="js-select">
-        <option value="">Selecciona una raza para pelear</option>
+        <option value="">Selecciona una raza</option>
         <option value="1">Pelosos</option>
         <option value="2">Sureños</option>
         <option value="3">Enanos</option>
@@ -28,12 +31,15 @@
         <button class="js-reset collapse button">Reiniciar el juego</button>
       </div>
     </form>
+    <div class="js-good-container"></div>
     <div class="js-bad-container"></div>
-
-    <p class="js-text message">¡Comienza la batalla!</p>
+    <div class="message">
+      <p class="js-text">¡Comienza la batalla!</p>
+    </div>
+    <div class="js-battle-text battle"></div>
     <aside class="score">
-      <p>Puntuaciones</p>
-      <ul class="js-score"></ul>
+      <p class="score-text">Puntuaciones</p>
+      <ul class="js-score score-list"></ul>
     </aside>
   </main>
   <script src="./js/main.js"></script>
